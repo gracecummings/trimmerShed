@@ -57,10 +57,12 @@ else:
     chunks = [args.chunksize]*cleanDiv
 iterIn = iter(corrIn)
 chunkedIn = [list(islice(iterIn,elem)) for elem in chunks]
+nchunks = len(chunkedIn)
+print "Number of chunks: ",nchunks
 
 for i,chunk in enumerate(chunkedIn):
     sampleName = chunk[0].split("_RA")[0]#Only works with chunking
-    #samplePath = str(args.eosDirTuples)+'/'+sampleName
+    samplePath = str(args.eosDirTuples)+'/'+sampleName
 
     #Make the jdl for each sample
     jdlName = "trimmer_"+sampleName+"_chunk"+str(i)+"_"+str(date.today())+".jdl"
@@ -75,7 +77,7 @@ for i,chunk in enumerate(chunkedIn):
     jdl.write("Executable = trimmer.sh\n")
     good_chunk = str(chunk).replace(' ','')#This id the string I need to pass to 
     test_chunk = str(chunk).translate(None,' ')
-    jdl.write("Arguments = {0} {1} {2} {3}\n".format(args.eosDirTuples,sampleName+"_chunk"+str(i)+"_",eosDirName,good_chunk))
+    jdl.write("Arguments = {0} {1} {2} {3} {4} {5}\n".format(args.eosDirTuples,sampleName+"_chunk"+str(i)+"_",eosDirName,good_chunk),str(i),str(nchunks))
     jdl.write('+DESIRED_Sites="T3_US_Baylor,T2_US_Caltech,T3_US_Colorado,T3_US_Cornell,T3_US_FIT,T1_US_FNAL,T3_US_FNALLPC,T3_US_Omaha,T3_US_JHU,T3_US_Kansas,T2_US_MIT,T3_US_NotreDame,T2_US_Nebraska,T3_US_NU,T3_US_OSU,T3_US_Princeton_ICSE,T2_US_Purdue,T3_US_Rice,T3_US_Rutgers,T3_US_MIT,T3_US_NERSC,T3_US_SDSC,T3_US_FIU,T3_US_FSU,T3_US_OSG,T3_US_TAMU,T3_US_TTU,T3_US_UCD,T3_US_UCSB,T2_US_UCSD,T3_US_UMD,T3_US_UMiss,T2_US_Vanderbilt,T2_US_Wisconsin"')
     jdl.write("\n")
     jdl.write("Queue 1\n")#Not sure about this one
@@ -84,5 +86,5 @@ for i,chunk in enumerate(chunkedIn):
     #print good_chunk
     
     #submit the jobs
-    os.system("condor_submit {0}".format(jdlName))
+    #os.system("condor_submit {0}".format(jdlName))
     

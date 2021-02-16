@@ -1,12 +1,14 @@
 #!/bin/bash
 
 #untar your crap
-echo "untaring  directory with skimming code"
+echo "Untaring  directory with skimming code"
 tar -xvf condorTrimmer.tar.gz
 cd condorTrimmer
 
 #source your environment
 source /cvmfs/sft.cern.ch/lcg/views/LCG_96/x86_64-centos7-gcc8-opt/setup.sh
+
+echo "Skimming chunk $5 of $6"
 
 #run this mother
 echo "running the skimmer"

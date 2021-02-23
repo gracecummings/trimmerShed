@@ -1,0 +1,5 @@
+*.jdl
+*.py~
+*.tar.gz
+*.sh~
+.gitignore~

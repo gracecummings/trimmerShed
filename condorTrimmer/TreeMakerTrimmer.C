@@ -57,14 +57,14 @@ void TreeMakerTrimmer::Loop(std::string outputFileName)
    hnevents->SetBinContent(1,nentries);
 
    //Branch Handling
-   fChain->SetBranchStatus("*",0);
-   fChain->SetBranchStatus("ZCandidates",1);
-   fChain->SetBranchStatus("JetsAK8Clean",1);
-   fChain->SetBranchStatus("HBHEIsoNoiseFilter",1);
-   fChain->SetBranchStatus("HBHENoiseFilter",1);
-   fChain->SetBranchStatus("globalSuperTightHalo2016Filter",1);
-   fChain->SetBranchStatus("EcalDeadCellTriggerPrimitiveFilter",1);
-   fChain->SetBranchStatus("BadPFMuonFilter",1);
+   //fChain->SetBranchStatus("*",0);
+   //fChain->SetBranchStatus("ZCandidates",1);
+   //fChain->SetBranchStatus("JetsAK8Clean",1);
+   //fChain->SetBranchStatus("HBHEIsoNoiseFilter",1);
+   //fChain->SetBranchStatus("HBHENoiseFilter",1);
+   //fChain->SetBranchStatus("globalSuperTightHalo2016Filter",1);
+   //fChain->SetBranchStatus("EcalDeadCellTriggerPrimitiveFilter",1);
+   //fChain->SetBranchStatus("BadPFMuonFilter",1);
 
 
    //Begin the Skim
